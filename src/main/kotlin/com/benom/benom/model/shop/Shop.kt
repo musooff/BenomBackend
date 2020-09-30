@@ -22,7 +22,9 @@ data class Shop(
 
     @Column(name = "phone_number")
     val phoneNumber: String,
-    val email: String,
+    val password: String,
+    val email: String? = null,
+    val website: String? = null,
     @Id
     @GeneratedValue
     var id: Long = 0

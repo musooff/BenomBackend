@@ -5,6 +5,7 @@ import com.benom.benom.model.contstants.Province
 import com.benom.benom.repository.CityRepository
 import com.benom.benom.repository.ProvinceRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -19,6 +20,7 @@ class ConstantsController {
     @Autowired
     private lateinit var cityRepository: CityRepository
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/province/all")
     fun getProvinces(): List<Province> {
         return provinceRepository.findAll()

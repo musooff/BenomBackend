@@ -9,6 +9,7 @@ import com.benom.benom.repository.AddressRepository
 import com.benom.benom.repository.MerchantRepository
 import com.benom.benom.repository.ShopRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.repository.query.Param
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -24,12 +25,15 @@ class ShopController {
     @Autowired
     private lateinit var merchantRepository: MerchantRepository
 
+
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/exists")
-    fun isShopAvailable(@RequestBody createShop: CreateShop): BooleanResponse {
-        val shopExists = shopRepository.existsByName(createShop.shopName)
+    fun isShopAvailable(@Param("name") name: String): BooleanResponse {
+        val shopExists = shopRepository.existsByName(name)
         return BooleanResponse(shopExists)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @PostMapping("/create")
     fun createShop(@RequestBody shop: Shop) {
 
