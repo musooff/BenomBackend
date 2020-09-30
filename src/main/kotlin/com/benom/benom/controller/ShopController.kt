@@ -36,7 +36,6 @@ class ShopController {
         val address = saveAddress(shop.address)
         val merchant = saveMerchant(shop.merchant)
         val newShop = shop.copy(
-            id = "${shop.name}_${System.currentTimeMillis()}",
             domain = generateShopDomain(shop.name),
             featuredProducts = ArrayList(),
             address = address,
@@ -53,18 +52,11 @@ class ShopController {
     }
 
     private fun saveAddress(address: Address): Address {
-        val newAddress = address.copy(
-            id = "${address.address}_${System.currentTimeMillis()}",
-            website = null
-        )
-        return addressRepository.save(newAddress)
+        return addressRepository.save(address)
     }
 
     private fun saveMerchant(merchant: Merchant): Merchant {
-        val newMerchant = merchant.copy(
-            id = "${merchant.firstName}_${System.currentTimeMillis()}"
-        )
-        return merchantRepository.save(newMerchant)
+        return merchantRepository.save(merchant)
 
     }
 }

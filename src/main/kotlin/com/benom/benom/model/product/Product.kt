@@ -4,9 +4,6 @@ import javax.persistence.*
 
 @Entity
 data class Product(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: String,
     val title: String,
     val quantity: Int,
     val price: Float,
@@ -21,5 +18,8 @@ data class Product(
     @Column(name = "shop_id")
     val shopId: String,
     @Column(name = "merchant_id")
-    val merchantId: String
+    val merchantId: String,
+    @Id
+    @GeneratedValue
+    var id: Long = 0
 )

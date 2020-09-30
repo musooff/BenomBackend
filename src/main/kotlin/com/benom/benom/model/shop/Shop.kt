@@ -6,8 +6,6 @@ import javax.persistence.*
 
 @Entity
 data class Shop(
-    @Id
-    val id: String,
     val name: String,
     val domain: String? = null,
 
@@ -24,5 +22,8 @@ data class Shop(
 
     @Column(name = "phone_number")
     val phoneNumber: String,
-    val email: String
+    val email: String,
+    @Id
+    @GeneratedValue
+    var id: Long = 0
 )
